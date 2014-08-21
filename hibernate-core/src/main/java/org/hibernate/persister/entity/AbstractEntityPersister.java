@@ -147,7 +147,6 @@ import org.hibernate.type.EntityType;
 import org.hibernate.type.Type;
 import org.hibernate.type.TypeHelper;
 import org.hibernate.type.VersionType;
-
 import org.jboss.logging.Logger;
 
 /**
@@ -4899,7 +4898,7 @@ public abstract class AbstractEntityPersister
 						return null;
 					}
 
-					return (Serializable) getIdentifierType().hydrate( rs, getIdentifierAliases(), session, null );
+					return (Serializable) getIdentifierType().nullSafeGet( rs, getIdentifierAliases(), session, null );
 				}
 				finally {
 					session.getTransactionCoordinator().getJdbcCoordinator().release( rs, ps );
